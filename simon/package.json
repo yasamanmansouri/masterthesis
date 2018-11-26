@@ -1,0 +1,24 @@
+{
+  "name": "simon",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^4.8.0",
+    "pressure": "^2.1.2",
+    "react": "^16.3.2",
+    "react-countdown-clock": "^2.4.0",
+    "react-dom": "^16.3.2",
+    "react-pressure": "^0.1.7",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^3.2.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

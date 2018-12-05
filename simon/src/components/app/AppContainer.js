@@ -1,4 +1,4 @@
-//  
+//
 
 import { connect } from "react-redux";
 
@@ -8,7 +8,9 @@ import App from "./App.jsx";
 // Actions
 import { writeElementsToState } from "../../actions/actions.js";
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  userId: state.user.id
+});
 
 const mapDispatchToProps = dispatch => ({
   onWriteElementsToState: elements => {

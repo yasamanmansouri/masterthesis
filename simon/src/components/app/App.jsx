@@ -24,7 +24,7 @@ class App extends Component {
       <ThemeProvider theme={this.props.theme}>
         <AppComp>
           <UserIdInput />
-          <Game />
+          {this.props.userId ? <Game /> : null}
           <Results />
         </AppComp>
       </ThemeProvider>

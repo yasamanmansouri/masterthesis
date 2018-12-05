@@ -8,8 +8,11 @@ import UserInputStage from "./userInputStage/UserInputStageContainer.js";
 
 class Game extends Component {
   render() {
+    const divStyle = {
+      height: '100%'
+    }
     return (
-      <div>
+      <div style={divStyle}>
         {this.props.navigation.preTraining ? <PreTraining /> : null}
         {this.props.navigation.training ? (
           <TrainingStage theme={this.props.theme} />

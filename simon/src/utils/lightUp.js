@@ -1,5 +1,3 @@
-//
-
 export const createPattern = (patternSize, elements) => {
   let availiableElements = elements;
   let pattern = [];
@@ -24,14 +22,14 @@ export const createPattern = (patternSize, elements) => {
 };
 
 export const getNewSpeed = (currentSpeed, rollback) => {
-  const linearStepSize = 300;
+  const linearStepSize = 200;
   if (!rollback) {
     // Preventing nevative speed
     if (currentSpeed - linearStepSize > 0) {
       return currentSpeed - linearStepSize;
     } else {
-      // Do not reduce speed if speed is 75ms
-      if (currentSpeed === 150) return currentSpeed;
+      // Do not reduce speed if speed is 100ms
+      if (currentSpeed === 100) return currentSpeed;
       currentSpeed / 2;
     }
   } else {

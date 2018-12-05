@@ -25,7 +25,7 @@ const initialState = {
   id: null,
   dimension: "",
   rollback: false,
-  speed: 3000,
+  speed: 2000,
   opacity: 1,
   points: 0,
   pointsValue: 10,

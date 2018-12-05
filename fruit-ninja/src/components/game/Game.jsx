@@ -128,9 +128,12 @@ class Game extends Component {
   };
 
   render() {
+    const divStyle = {
+      height: "100%"
+    }
     if (!this.props.isResults) {
       return (
-        <div id="element">
+        <div id="element" style={this.props.userId ? divStyle : {height: "0%"}}>
           <GameComp userId={this.props.userId}>
             <Elements />
             {!this.props.gameStarted ? (

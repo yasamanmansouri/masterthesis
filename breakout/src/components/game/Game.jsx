@@ -52,6 +52,8 @@ class Game extends Component {
       start: 0,
       end: 0,
       force: 0,
+      xCoordinate: 0,
+      yCoordinate: 0,
       duration: 0
     }
   };
@@ -68,10 +70,14 @@ class Game extends Component {
       Pressure.set("#gameCanvas", {
         start: event => {
           const clickStart = Date.now();
+          const xCoordinate = event.touches[0].clientX;
+          const yCoordinate = event.touches[0].clientY;
           this.setState({
             click: {
               ...this.state.click,
-              start: clickStart
+              start: clickStart,
+              xCoordinate,
+              yCoordinate,
             }
           });
         },
@@ -96,6 +102,8 @@ class Game extends Component {
                 click: {
                   start: 0,
                   end: 0,
+                  xCoordinate: 0,
+                  yCoordinate: 0,
                   force: 0,
                   duration: 0
                 }

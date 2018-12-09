@@ -30,23 +30,16 @@ class UserInputStage extends Component {
       patternSize: this.props.patternLength,
       pattern: this.props.currentRound.pattern,
       selectedElements: [],
-      click: {
-        start: 0,
-        end: 0,
-        xCoordinate: 0,
-        yCoordinate: 0,
-        force: 0,
-        duration: 0
-      },
       fallbackClick: {
         start: 0,
+        end: 0,
         xCoordinate: 0,
         yCoordinate: 0
       }
     };
     this.clicking = new Audio(click);
   }
-  handleFallbackClickStart = event => {
+  handleClickStart = event => {
     const clickStart = Date.now();
     const xCoordinate = event.touches[0].clientX;
     const yCoordinate = event.touches[0].clientY;
@@ -54,6 +47,16 @@ class UserInputStage extends Component {
       {
         ...this.state,
         fallbackClick: { start: clickStart, xCoordinate, yCoordinate }
+      }
+    );
+  };
+
+  handleClickEnd = event => {
+    const clickEnd = Date.now();
+    this.setState(
+      {
+        ...this.state,
+        fallbackClick: { ...this.state.fallbackClick, end: clickEnd}
       },
       () => {
         this.props.saveClick(this.state.fallbackClick);
@@ -61,6 +64,7 @@ class UserInputStage extends Component {
           ...this.state,
           fallbackClick: {
             start: 0,
+            end: 0,
             xCoordinate: 0,
             yCoordinate: 0
           }
@@ -76,65 +80,14 @@ class UserInputStage extends Component {
       const element = document.getElementById("element");
       element.addEventListener(
         "touchstart",
-        this.handleFallbackClickStart,
+        this.handleClickStart,
         false
       );
-      Pressure.set("#element", {
-        start: event => {
-          const clickStart = Date.now();
-          let xCoordinate;
-          let yCoordinate;
-          if (event.touches.length === 1) {
-            const touch = event.touches[0];
-            xCoordinate = touch.clientX;
-            yCoordinate = touch.clientY;
-          }
-          this.setState({
-            ...this.state,
-            click: {
-              ...this.state.click,
-              start: clickStart,
-              xCoordinate,
-              yCoordinate
-            }
-          });
-        },
-        change: (force, event) => {
-          this.setState({
-            ...this.state,
-            click: { ...this.state.click, force }
-          });
-        },
-        end: () => {
-          const clickEnd = Date.now();
-          const clickStart = this.state.click.start;
-          const clickDuration = getTime(clickStart, clickEnd);
-          this.setState(
-            {
-              ...this.state,
-              click: {
-                ...this.state.click,
-                end: clickEnd,
-                duration: clickDuration
-              }
-            },
-            () => {
-              this.props.saveClick(this.state.click);
-              this.setState({
-                ...this.state,
-                click: {
-                  start: 0,
-                  end: 0,
-                  xCoordinate: 0,
-                  yCoordinate: 0,
-                  force: 0,
-                  duration: 0
-                }
-              });
-            }
-          );
-        }
-      });
+      element.addEventListener(
+        "touchend",
+        this.handleClickEnd,
+        false
+      );
     }
   }
 

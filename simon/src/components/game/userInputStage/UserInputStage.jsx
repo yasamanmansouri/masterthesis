@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Pressure from "pressure";
 
 // Styled Components
 import TrainingStageComp from "../trainingStage/TrainingStage.js";
@@ -17,7 +16,6 @@ import {
   getEnrichedResults,
   getAnswerScore,
   getTimeScore,
-  getTime
 } from "../../../utils/results.js";
 
 class UserInputStage extends Component {

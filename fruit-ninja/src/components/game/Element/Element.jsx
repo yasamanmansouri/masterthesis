@@ -58,7 +58,9 @@ class Element extends Component {
     return (
       <div>
         <ClickArea
-          onClick={event => this.clickElement()}
+          // Use onClick for Desktop
+          // onClick={event => this.clickElement()}
+          onTouchStart={event => this.clickElement()}
           opacity={opacity}
           speed={speed}
           yCoordinate={yCoordinate}

@@ -7,7 +7,8 @@ const square = styled.div`
   width: ${props => props.size};
   margin: ${props => props.margin};
   border: 2px solid black;
-  border-radius: 10px
+  border-radius: 10px;
+  opacity: ${props => props.opacity};
   &:hover {
     cursor: pointer;
   }

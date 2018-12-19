@@ -68,7 +68,7 @@ class Element extends Component {
           clicked={this.state.clicked}
           id={`animation-${this.props.elementId}`}
         >
-          <ElementComp src={iconValue} />
+          <ElementComp src={iconValue} id='img'/>
         </ClickArea>
         <Incentive />
       </div>
